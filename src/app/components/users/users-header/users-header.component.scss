@@ -1,0 +1,50 @@
+// import variables
+@import '../../../../assets/styles/variables.scss';
+// import mixins
+@import '../../../../assets/styles/mixins.scss';
+
+.users-header-wrapper {
+    padding: 15px 0;
+    margin-top: 5px;
+    background-color: $offWhite;
+    .breadcrumb {
+        padding: 0;
+        margin: 0;
+        background-color: transparent;
+        li {
+            padding: 0;
+            margin: 0 5px 0 0;
+            &:last-child {
+                margin-right: 0;
+            }
+            &:before {
+                padding-right: 5px;
+                @include font-size($fontTiny);
+            }
+            a {
+                color: $mainPurple;
+                @include font-size($fontTiny);
+            }
+        }
+    }
+    .users-header {
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 8px;
+        h1 {
+            margin: 0;
+            color: $darkBlue;
+            font-weight: bold;
+            @include font-size($fontLarge);
+        }
+        button {
+            text-transform: capitalize;
+            span {
+                display: inline-block;
+                margin-right: 5px;
+                font-weight: 300;
+                @include font-size($fontMedium);
+            }
+        }
+    }
+}

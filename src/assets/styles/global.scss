@@ -8,8 +8,12 @@
 
 // rectangle common button
 .btn.btn-default.btn-rec {
-  width: 94px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 94px;
   height: 40px;
+  padding: 0 15px;
   font-weight: bold;
   text-transform: uppercase;
   color: $white;
