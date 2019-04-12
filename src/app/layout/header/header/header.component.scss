@@ -1,0 +1,25 @@
+// import variables styles
+@import '../../../../assets/styles/variables.scss';
+
+header {
+    min-height: 70px;
+    nav {
+        min-height: 70px;
+    }
+    .nav-item {
+        margin: 0 10px;
+        &:last-child {
+            margin: 0;
+        }
+    }
+}
+.nav-link {
+    font-size: $fontSmall;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: $darkBlue;
+    transition: 0.2s all;
+    &:hover {
+        color: $btnRecColor;
+    }
+}

@@ -1,0 +1,26 @@
+// import variables styles
+@import './variables.scss';
+
+// rectangle common button
+.btn.btn-default.btn-rec {
+  width: 94px;
+  height: 40px;
+  margin-left: 20px;
+  font-size: $fontSmall;
+  font-weight: bold;
+  color: $white;
+  border-color: $btnRecColor;
+  border-radius: 20px;
+  background-color: $btnRecColor;
+  transition: 0.2s all;
+  &:hover {
+    color: $btnRecColor;
+    background: $white;
+    border-color: $btnRecColor;
+  }
+}
+
+// common box shadow
+.black-box-shadow {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
