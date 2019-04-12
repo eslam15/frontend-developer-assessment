@@ -1,25 +1,25 @@
-// import variables styles
+// import variables
 @import '../../../../assets/styles/variables.scss';
+// import mixins
+@import '../../../../assets/styles/mixins.scss';
 
-header {
+nav {
     min-height: 70px;
-    nav {
-        min-height: 70px;
-    }
     .nav-item {
         margin: 0 10px;
         &:last-child {
-            margin: 0;
+            margin: 0 0 0 10px;
         }
     }
 }
+
 .nav-link {
-    font-size: $fontSmall;
     font-weight: bold;
     text-transform: uppercase;
     color: $darkBlue;
-    transition: 0.2s all;
+    @include font-size($fontSmall);
+    @include transition(all, 0.2s);
     &:hover {
-        color: $btnRecColor;
+        color: $mainPurple;
     }
 }

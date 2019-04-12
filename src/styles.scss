@@ -1,8 +1,10 @@
-// import fonts styles
+// import fonts
 @import 'assets/styles/fonts.scss';
-// import variables styles
+// import variables
 @import 'assets/styles/variables.scss';
-// import global styles
+// import mixins
+@import 'assets/styles/mixins.scss';
+// import global
 @import 'assets/styles/global.scss';
-// import main styles
+// import main
 @import 'assets/styles/main.scss';
