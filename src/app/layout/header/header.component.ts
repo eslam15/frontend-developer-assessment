@@ -6,8 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  collapsed: boolean = false;
 
   constructor() { }
+
+  // collapse navbar on mobiles and tablet
+  collapse() {
+    this.collapsed = !this.collapsed;
+  }
 
   ngOnInit() {
   }

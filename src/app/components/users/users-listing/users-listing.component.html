@@ -7,7 +7,28 @@
                         <h6>User</h6>
                         <h6 class="d-none d-sm-block">Actions</h6>
                     </div>
-                    <app-single-user></app-single-user>
+                    <!-- start users list  -->
+                    <div *ngFor="let user of users" class="single-user-wrapper">
+                      <div class="single-user-row d-flex">
+                        <div class="single-user-info d-flex">
+                          <img class="img-fluid" src="{{user.avatar}}" alt="{{user.first_name}}"
+                            title="{{user.first_name}} {{user.last_name}}">
+                          <h4>{{user.first_name}} {{user.last_name}}</h4>
+                        </div>
+                        <div class="single-user-actions">
+                          <span class="action-icon" title="edit">
+                            <i class="icon icon-edit"></i>
+                          </span>
+                          <span class="action-icon" title="delete">
+                            <i class="icon icon-delete"></i>
+                          </span>
+                          <span class="action-icon" title="details">
+                            <i class="icon icon-more"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- end users list -->
                 </div>
             </div>
         </div>
