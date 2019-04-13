@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+
 import { UsersService } from '../../../shared/users.service';
-import { Observable } from "rxjs";
+
+import { ModalDataService } from '../../../shared/modal.service';
+
 
 @Component({
   selector: 'app-users-listing',
@@ -9,8 +12,11 @@ import { Observable } from "rxjs";
 })
 export class UsersListingComponent implements OnInit {
   users: any = [];
+  user = {};
+  currentUser = {};
+  currentIndex: any;
 
-  constructor(private usersService: UsersService) { 
+  constructor(private mdService: ModalDataService, private usersService: UsersService) { 
     this.loadUsers();
   }
 
@@ -22,7 +28,31 @@ export class UsersListingComponent implements OnInit {
       })
   }
 
+  // open delete modal
+  openModalDelete(content: any) {
+    this.mdService.openDialog(content);
+  }
+
+  // show confirm delete message
+  confirmDeleteUser(user: any, index: any) {
+    this.currentUser = user;
+    this.currentIndex = index;
+  }
+
+  // delete user
+  deleteUser(user: any) {
+    this.usersService.deleteUser(user.id)
+      .subscribe(() => {
+        let i = this.users.findIndex(function (user: any) {
+          return user.id == user.id;
+        });
+        this.users.splice(i, 1);
+        this.currentIndex = null;
+      })
+  }
+
   ngOnInit() {
+
   }
 
 }

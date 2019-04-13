@@ -1,15 +1,15 @@
-<div class="users-listing ">
+<div class="users-listing">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div class="users-listing-wrapper black-box-shadow">
+                <div class="users-listing-wrapper black-box-shadow" *ngIf="users.length != 0">
                     <div class="users-listing-header d-flex">
                         <h6>User</h6>
                         <h6 class="d-none d-sm-block">Actions</h6>
                     </div>
                     <!-- start users list  -->
                     <div *ngFor="let user of users" class="single-user-wrapper">
-                      <div class="single-user-row d-flex">
+                      <div let user="user" let userIndex="userIndex" class="single-user-row d-flex">
                         <div class="single-user-info d-flex">
                           <img class="img-fluid" src="{{user.avatar}}" alt="{{user.first_name}}"
                             title="{{user.first_name}} {{user.last_name}}">
@@ -19,7 +19,8 @@
                           <span class="action-icon" title="edit">
                             <i class="icon icon-edit"></i>
                           </span>
-                          <span class="action-icon" title="delete">
+                          <span (click)="confirmDeleteUser(user, userIndex)" (click)="openModalDelete(content)"
+                            class="action-icon" title="delete">
                             <i class="icon icon-delete"></i>
                           </span>
                           <span class="action-icon" title="details">
@@ -30,7 +31,26 @@
                     </div>
                     <!-- end users list -->
                 </div>
+                <div class="users-listing-wrapper black-box-shadow no-data" *ngIf="users.length == 0">
+                    <h3 class=text-center>No Users!</h3>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- start modal delete -->
+<ng-template #content let-modal>
+  <div class="modal-body">
+      <div class="modal-heading">
+          <h4>Are you sure you want to delete</h4>
+          <h3>{{currentUser.first_name}} {{currentUser.last_name}}</h3>
+      </div>
+      <div class="d-flex form-actions">
+        <button (click)="modal.close('Close click')" type="button" class="btn btn-light black-box-shadow">No</button>
+        <button (click)="deleteUser(currentUser)" (click)="modal.close('Save click')"
+          class="btn btn-default btn-rec black-box-shadow">Yes</button>
+      </div>
+  </div>
+</ng-template>
+<!-- end modal delete -->

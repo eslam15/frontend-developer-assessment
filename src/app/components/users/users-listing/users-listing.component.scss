@@ -143,4 +143,10 @@
         }
       }
     }
+    &.no-data {
+      h3 {
+        color: $darkBlue;
+        @include font-size($fontMedium);
+      }
+    }
 }
