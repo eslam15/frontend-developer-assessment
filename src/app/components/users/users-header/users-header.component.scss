@@ -27,7 +27,7 @@
             }
         }
     }
-    .users-header {
+    .users-add {
         justify-content: space-between;
         align-items: center;
         margin-top: 8px;
@@ -36,6 +36,10 @@
             color: $darkBlue;
             font-weight: bold;
             @include font-size($fontLarge);
+            @include breakpoint(mobile) {
+                @include font-size($fontMedium);
+
+            }
         }
         button {
             text-transform: capitalize;
@@ -44,6 +48,9 @@
                 margin-right: 5px;
                 font-weight: 300;
                 @include font-size($fontMedium);
+                @include breakpoint(mobile) {
+                  @include font-size($fontSmall);
+                }
             }
         }
     }

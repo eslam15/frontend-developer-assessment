@@ -8,6 +8,8 @@ import { LoginFormComponent } from './components/login/login-form/login-form.com
 import { NavbarComponent } from './layout/header/navbar/navbar.component';
 import { UsersComponent } from './components/users/users.component';
 import { UsersHeaderComponent } from './components/users/users-header/users-header.component';
+import { UsersListingComponent } from './components/users/users-listing/users-listing.component';
+import { SingleUserComponent } from './components/users/users-listing/single-user/single-user.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { UsersHeaderComponent } from './components/users/users-header/users-head
     LoginFormComponent,
     NavbarComponent,
     UsersComponent,
-    UsersHeaderComponent
+    UsersHeaderComponent,
+    UsersListingComponent,
+    SingleUserComponent
   ],
   imports: [
     BrowserModule

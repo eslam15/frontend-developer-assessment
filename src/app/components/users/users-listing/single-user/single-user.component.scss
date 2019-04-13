@@ -1,0 +1,102 @@
+// import variables
+@import '../../../../../assets/styles/variables.scss';
+// import mixins
+@import '../../../../../assets/styles/mixins.scss';
+
+.single-user-wrapper {
+    padding: 10px 0;
+    border-bottom: 1px solid $borderColor;
+    &:last-child {
+        border-bottom: 0;
+    }
+    .single-user-row {
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        background-color: $white;
+        @include border-radius(10px);
+        @include transition(all, 0.2s);
+        @include breakpoint(mobile) {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        &:hover {
+            cursor: pointer;
+            background-color: rgba(140, 67, 172, 0.05);
+        }
+        .single-user-info {
+            align-items: center;
+            @include breakpoint(mobile) {
+                margin-bottom: 30px;
+            }
+            img {
+                width: 55px;
+                height: 55px;
+                @include border-radius(100%);
+            }
+            h4 {
+                margin: 0 0 0 10px;
+                color: $darkBlue;
+                font-weight: 500;
+                @include font-size($fontSmall);
+                @include breakpoint(mobile) {
+                    margin-left: 15px;
+                }
+            }
+        }
+        .single-user-actions {
+            .action-icon {
+                display: inline-block;
+                width: 30px;
+                height: 30px;
+                border: 1px solid $mainPurple;
+                background-color: $white;
+                margin-right: 15px;
+                @include border-radius(3px);
+                @include transition (all, 0.2s);
+                &:hover {
+                    background-color: $mainPurple;
+                    border: 1px solid $white;
+                    i {
+                        color: $white;
+                    }
+                }
+                &:last-child {
+                    position: relative;
+                    border: 0;
+                    right: 0;
+                    left: auto;
+                    top: auto;
+                    bottom: auto;
+                    margin-left: 30px;
+                    margin-right: 0;
+                    background: transparent;
+                    @include breakpoint(mobile) {
+                        margin-left: 15px;
+                    }
+                    i {
+                        @include font-size($fontTiny);
+                    }
+                    &:hover {
+                        right: -5px;
+                        background-color: transparent;
+                        border: none;
+                        i {
+                            color: $mainPurple;
+                        }
+                    }
+                }
+                i {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100%;
+                    width: 100%;
+                    color: $mainPurple;
+                    @include transition (all, 0.2s);
+                    @include font-size($fontExSmall);
+                }
+            } 
+        }
+    }
+}

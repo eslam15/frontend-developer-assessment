@@ -22,6 +22,9 @@
   @include font-size($fontSmall);
   @include border-radius(20px);
   @include transition(0.2s, all);
+  @include breakpoint(mobile) {
+    @include font-size($fontExSmall);
+  }
   &:hover {
     color: $mainPurple;
     background: $white;

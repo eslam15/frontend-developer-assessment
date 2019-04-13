@@ -1,0 +1,31 @@
+// import variables
+@import '../../../../assets/styles/variables.scss';
+// import mixins
+@import '../../../../assets/styles/mixins.scss';
+
+.users-listing-wrapper {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 15px 15px 5px 15px;
+    background: $white;
+    @include border-radius(10px);
+    .users-listing-header {
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 15px;
+        margin-bottom: 20px;
+        @include breakpoint(mobile) {
+            margin-bottom: 15px;
+        }
+        h6 {
+            margin: 0;
+            font-weight: 500;
+            color: $lightGrey;
+            @include font-size($fontTiny);
+            &:last-child {
+                width: 150px;
+                text-align: left;
+            }
+        }
+    }
+}
