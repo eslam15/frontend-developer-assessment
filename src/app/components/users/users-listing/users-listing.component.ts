@@ -15,16 +15,36 @@ export class UsersListingComponent implements OnInit {
   user = {};
   currentUser = {};
   currentIndex: any;
+  userDetails: boolean = false;
 
   constructor(private mdService: ModalDataService, private usersService: UsersService) { 
     this.loadUsers();
   }
 
-  // get all users
+  // show user details aside
+  showUserDeatils() {
+    this.userDetails = true;
+  }
+
+  // hide user details aside
+  hideUserDeatils() {
+    this.userDetails = false;
+    this.user = {};
+  }
+
+  // load all users
   loadUsers() {
     this.usersService.getUsers()
       .subscribe(data => {
-        return this.users = data.data;
+        this.users = data.data;
+      })
+  }
+
+  // load single user
+  loadUser(id: number) {
+    this.usersService.getUser(id)
+      .subscribe(user => {
+        this.user = user.data;
       })
   }
 
@@ -39,7 +59,7 @@ export class UsersListingComponent implements OnInit {
     this.currentIndex = index;
   }
 
-  // delete user
+  // delete single user
   deleteUser(user: any) {
     this.usersService.deleteUser(user.id)
       .subscribe(() => {

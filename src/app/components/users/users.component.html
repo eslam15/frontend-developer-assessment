@@ -30,7 +30,7 @@
     <form (ngSubmit)="submitCreateUser()" ngNativeValidate>
       <div class="form-group file-input">
         <div class="input-group">
-          <i class="icon icon-icon-user d-flex"></i>
+          <i class="icon icon-user d-flex"></i>
           <input accept="image/png, image/jpeg, image/jpg, image/gif" type="file" name="avatar"
             (change)="previewImage($event)" [(ngModel)]="user.avatar" id="avatar" class="form-control">
           <div class="input-group">

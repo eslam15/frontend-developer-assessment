@@ -63,21 +63,21 @@
   font-style: normal;
 }
 
-// Actions Icons Font
+// Icons Font
 @font-face {
-  font-family: "actions-font";
-  src: url("assets/fonts/actions-icons/actions-font.eot");
-  src: url("assets/fonts/actions-icons/actions-font.eot?#iefix") format("embedded-opentype"),
-    url("assets/fonts/actions-icons/actions-font.woff") format("woff"),
-    url("assets/fonts/actions-icons/actions-font.ttf") format("truetype"),
-    url("assets/fonts/actions-icons/actions-font.svg#actions-font/actions-font") format("svg");
+  font-family: "icons-font";
+  src: url("assets/fonts/icons-font/icons-font.eot");
+  src: url("assets/fonts/icons-font/icons-font.eot?#iefix") format("embedded-opentype"),
+    url("assets/fonts/icons-font/icons-font.woff") format("woff"),
+    url("assets/fonts/icons-font/icons-font.ttf") format("truetype"),
+    url("assets/fonts/icons-font/icons-font.svg#icons-font/icons-font") format("svg");
   font-weight: normal;
   font-style: normal;
 
 }
 
 [data-icon]:before {
-  font-family: "actions-font" !important;
+  font-family: "icons-font" !important;
   content: attr(data-icon);
   font-style: normal !important;
   font-weight: normal !important;
@@ -90,7 +90,7 @@
 
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
-  font-family: "actions-font" !important;
+  font-family: "icons-font" !important;
   font-style: normal !important;
   font-weight: normal !important;
   font-variant: normal !important;
@@ -112,6 +112,10 @@
   content: "\63";
 }
 
-.icon-icon-user:before {
-  content: "\64";
+.icon-user:before {
+  content: "\66";
+}
+
+.icon-cross:before {
+  content: "\65";
 }

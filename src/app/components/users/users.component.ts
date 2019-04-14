@@ -20,7 +20,6 @@ export class UsersComponent implements OnInit {
   };
 
   constructor(private mdService: ModalDataService, private usersService: UsersService) {
-    this.loadUsers();
   }
 
 

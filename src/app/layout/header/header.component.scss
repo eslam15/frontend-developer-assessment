@@ -16,16 +16,27 @@ header {
             }
         }
         .navbar-collapse {
-            @include transition(all, 0.2s);
             &.collapseOut {
-                display: none;
+                @include transition(height, 0.3s);
+                height: 0px;
+                ul {
+                    @include breakpoint(tablet) {
+                        @include opacity(0);
+                        @include transition(opacity, 0.1s);
+                    }
+                }
             }
             &.collapseIn {
-                display: block;
+                @include transition(height, 0.3s);
+                height: 185px;
+                ul {
+                    @include transition(opacity, 0.8s);
+                    @include opacity(1);
+                }
             }
         }
         .navbar-nav {
-            @include breakpoint(laptop) {
+            @include breakpoint(tablet) {
                 display: inline-block;
                 padding: 15px 0;
                 li {
