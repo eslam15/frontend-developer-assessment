@@ -29,15 +29,6 @@ export class UsersComponent implements OnInit {
     this.imageFile = null;
   }
 
-  // get all users
-  loadUsers() {
-    this.usersService.getUsers()
-      .subscribe(data => {
-        this.users = data.data;
-        console.log(this.users)
-      })
-  }
-
   submitCreateUser() {
     let formData: FormData = new FormData();
     formData.append('name', this.user.first_name);

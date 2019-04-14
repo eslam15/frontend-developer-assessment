@@ -14,6 +14,7 @@ import { LoginFormComponent } from './components/login/login-form/login-form.com
 import { UsersComponent } from './components/users/users.component';
 import { UsersListingComponent } from './components/users/users-listing/users-listing.component';
 
+import { ToastService } from './shared/toaster.service';
 import { ModalDataService } from './shared/modal.service';
 import { UsersService } from './shared/users.service';
 
@@ -37,7 +38,8 @@ import { UsersService } from './shared/users.service';
   ],
   providers: [
     ModalDataService,
-    UsersService
+    UsersService,
+    ToastService
   ],
   bootstrap: [AppComponent]
 })

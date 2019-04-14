@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../../shared/users.service';
 
 import { ModalDataService } from '../../../shared/modal.service';
-
+import { ToastService } from '../../../shared/toaster.service';
 
 @Component({
   selector: 'app-users-listing',
@@ -14,10 +14,13 @@ export class UsersListingComponent implements OnInit {
   users: any = [];
   user = {};
   currentUser = {};
-  currentIndex: any;
+  currentIndex: number;
   userDetails: boolean = false;
 
-  constructor(private mdService: ModalDataService, private usersService: UsersService) { 
+  constructor(
+    private mdService: ModalDataService, 
+    private usersService: UsersService, 
+    private toastService: ToastService) { 
     this.loadUsers();
   }
 
@@ -37,6 +40,7 @@ export class UsersListingComponent implements OnInit {
     this.usersService.getUsers()
       .subscribe(data => {
         this.users = data.data;
+        this.toastService.showSuccess('Users list is loaded successfully');
       })
   }
 
@@ -45,6 +49,7 @@ export class UsersListingComponent implements OnInit {
     this.usersService.getUser(id)
       .subscribe(user => {
         this.user = user.data;
+        this.toastService.showSuccess(`${user.data.first_name} ${user.data.last_name} is loaded successfully`);
       })
   }
 
@@ -54,7 +59,7 @@ export class UsersListingComponent implements OnInit {
   }
 
   // show confirm delete message
-  confirmDeleteUser(user: any, index: any) {
+  confirmDeleteUser(user: any, index: number) {
     this.currentUser = user;
     this.currentIndex = index;
   }
@@ -63,13 +68,17 @@ export class UsersListingComponent implements OnInit {
   deleteUser(user: any) {
     this.usersService.deleteUser(user.id)
       .subscribe(() => {
-        let i = this.users.findIndex(function (user: any) {
-          return user.id == user.id;
+        let i = this.users.findIndex(function (userId: any) {
+          return userId.id == user.id;
         });
         this.users.splice(i, 1);
         this.currentIndex = null;
+        this.userDetails = false;
+        this.user = {};
+        this.toastService.showSuccess(`${user.first_name} ${user.last_name} is deleted successfully`);
       })
   }
+
 
   ngOnInit() {
 
