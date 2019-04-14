@@ -25,10 +25,15 @@
   @include breakpoint(mobile) {
     @include font-size($fontExSmall);
   }
-  &:hover {
+  &:hover,
+  &:focus {
     color: $mainPurple;
     background: $white;
     border-color: $mainPurple;
+  }
+  &:focus {
+    outline: 0;
+    box-shadow: none;
   }
 }
 
@@ -171,7 +176,6 @@
         color: $lightGrey;
         @include font-size($fontSmall);
       }
-
       .form-actions {
         justify-content: space-between;
         align-items: center;

@@ -4,7 +4,7 @@
       <div class="col-12">
         <!-- start navbar -->
         <nav class="navbar navbar-light navbar-expand-lg">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" routerLink="/users">
             <img src="../../../../assets/images/logo.svg" alt="spaces logo" title="Spaces Logo">
           </a>
 
@@ -17,17 +17,17 @@
           <div [ngClass]="collapsed ? 'collapseIn' : 'collapseOut'" class="collapseOut navbar-collapse"
             id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <li class="nav-item">
+                <a class="nav-link" routerLink='/users' routerLinkActive="active">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" routerLink='/about' routerLinkActive="active">About</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
+                <a class="nav-link" routerLink='/contact' routerLinkActive="active">Contact</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link btn btn-default btn-rec black-box-shadow" href="#">Login</a>
+                <a class="nav-link btn btn-default btn-rec black-box-shadow" routerLink='/login'>Login</a>
               </li>
             </ul>
           </div>

@@ -4,16 +4,9 @@
 
 <!-- start main content -->
 <main>
-  <!-- start users -->
-  <app-users></app-users>
-  <!-- end users -->
-
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <!-- <app-login></app-login> -->
-      </div>
-    </div>
-  </div>
+  <block-ui [template]='blockTemplate'>
+    <router-outlet></router-outlet>
+  </block-ui>
+  <router-outlet></router-outlet>
 </main>
 <!-- end main content -->

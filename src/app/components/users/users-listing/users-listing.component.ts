@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { UsersService } from '../../../shared/users.service';
-
-import { ModalDataService } from '../../../shared/modal.service';
-import { ToastService } from '../../../shared/toaster.service';
+import { UsersService } from '../../../shared/services/users.service';
+import { ModalDataService } from '../../../shared/services/modal.service';
+import { ToastService } from '../../../shared/services/toaster.service';
 
 @Component({
   selector: 'app-users-listing',
@@ -13,6 +12,7 @@ import { ToastService } from '../../../shared/toaster.service';
 export class UsersListingComponent implements OnInit {
   users: any = [];
   user = {};
+  userId: number;
   currentUser = {};
   currentIndex: number;
   userDetails: boolean = false;
@@ -49,7 +49,7 @@ export class UsersListingComponent implements OnInit {
     this.usersService.getUser(id)
       .subscribe(user => {
         this.user = user.data;
-        this.toastService.showSuccess(`${user.data.first_name} ${user.data.last_name} is loaded successfully`);
+        this.toastService.showSuccess(`${user.data.first_name} ${user.data.last_name} data is loaded successfully`);
       })
   }
 
@@ -78,7 +78,6 @@ export class UsersListingComponent implements OnInit {
         this.toastService.showSuccess(`${user.first_name} ${user.last_name} is deleted successfully`);
       })
   }
-
 
   ngOnInit() {
 

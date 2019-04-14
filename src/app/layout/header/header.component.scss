@@ -62,5 +62,8 @@ header {
     &:hover {
         color: $mainPurple;
     }
+    &.active {
+        color: $mainPurple;
+    }
 }
 

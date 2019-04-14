@@ -1,0 +1,12 @@
+// import variables
+@import './variables.scss';
+
+.block-ui-spinner {
+    top: 50%;
+    .loader {
+        border-top-color: $mainPurple;
+        border-left-color: $mainPurple;
+        border-bottom-color: $white;
+        border-right-color: $white;
+    }
+}
