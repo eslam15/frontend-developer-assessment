@@ -17,7 +17,6 @@ import { ContactComponent } from './components/contact/contact.component';
 
 import { AuthGuard } from './auth/auth.guard';
 import { AuthService } from "./shared/services/auth.service";
-import { AuthHttpInterceptor } from "./shared/http/auth-http-interceptor";
 import { ToastService } from './shared/services/toaster.service';
 import { ModalDataService } from './shared/services/modal.service';
 import { UsersService } from './shared/services/users.service';
@@ -49,8 +48,7 @@ import { AppRoutingModule } from './app.routing.module';
     UsersService,
     ToastService,
     AuthService,
-    AuthGuard,
-    AuthHttpInterceptor
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

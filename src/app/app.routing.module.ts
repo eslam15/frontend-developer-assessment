@@ -9,7 +9,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { AuthGuard } from './auth/auth.guard';
 
 const appRoutes: Routes = [
-    { path: '', redirectTo: 'users', pathMatch: 'full' },
+    { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
     { path: 'users', component: UsersComponent, canActivate: [AuthGuard] },
     { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
@@ -22,6 +22,7 @@ const appRoutes: Routes = [
     exports: [RouterModule],
     providers: [],
 })
+
 export class AppRoutingModule {
 
 }

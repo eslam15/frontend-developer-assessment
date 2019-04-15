@@ -11,10 +11,10 @@ export class AuthService {
 
     @BlockUI() blockUI: NgBlockUI;
 
-    // base apis url
-    private baseUrl = 'https://reqres.in/api';
+    pendingRequests: number = 0;
 
-    token: string;
+    // base apis url
+    public baseUrl = 'https://reqres.in/api';
 
     // headers
     public headers = {
@@ -46,8 +46,12 @@ export class AuthService {
                 return Observable.throw(error.error.error || 'Server Error')
             })
             .finally(() => {
-                this.blockUI.stop();
-            })
+                this.pendingRequests--;
+                if (this.pendingRequests <= 0) {
+                    // there are no more pending requests
+                    this.blockUI.stop();
+                }
+            }) as any;
     }
 
     logout() {
@@ -65,5 +69,6 @@ export class AuthService {
     removeToken() {
         localStorage.removeItem('auth_token');
     }
+
 
 }

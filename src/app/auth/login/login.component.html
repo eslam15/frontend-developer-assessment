@@ -20,9 +20,19 @@
           id="email" 
           name="Email" 
           [(ngModel)]="user.email"
-          splaceholder="Email Address..." 
+          placeholder="Email Address..." 
           required
+          email
+          #email="ngModel"
         >
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+          <div *ngIf="email.errors.required">
+            Email Address is required.
+          </div>
+          <div *ngIf="email.errors.email">
+            Please Enter a valid email address
+          </div>
+        </div>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
@@ -33,8 +43,18 @@
           name="password" 
           [(ngModel)]="user.password" 
           placeholder="Password" 
+          minlength=6 
           required
+          #password="ngModel"
         >
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+          <div *ngIf="password.errors.required">
+            Password is required.
+          </div>
+          <div *ngIf="password.errors.minlength">
+            Password should be at least 6 characters.
+          </div>
+        </div>
       </div>
       <div class="d-flex form-actions">
         <a href="#">Forget password?</a>

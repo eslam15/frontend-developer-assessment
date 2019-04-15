@@ -6,7 +6,7 @@
         <!-- start breadcrumb -->
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a routerLink="/users">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
             <li class="breadcrumb-item"><a href="#">Dashboards</a></li>
           </ol>
         </nav>
@@ -15,7 +15,7 @@
         <!-- start users header & add user -->
         <div class="users-add d-flex">
           <h1>Users List</h1>
-          <button (click)="openModalData(content)" class="btn btn-default btn-rec black-box-shadow"><span>+</span> New
+          <button (click)="openModalData(add)" class="btn btn-default btn-rec black-box-shadow"><span>+</span> New
             User</button>
         </div>
         <!-- end users hedaer & add user -->
@@ -30,7 +30,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <div class="users d-flex" *ngIf="users.length != 0">
+        <div class="users d-flex" *ngIf="users?.length != 0">
           <!-- start users list  -->
           <div [ngClass]="!userDetails ? 'listFullWidth' : 'listPartialWidth'"
             class="users-listing-wrapper black-box-shadow listFullWidth">
@@ -41,12 +41,15 @@
             <div *ngFor="let user of users" class="single-user-wrapper">
               <div let user="user" let userIndex="userIndex" class="single-user-row d-flex">
                 <div class="single-user-info d-flex">
-                  <img class="img-fluid" src="{{user.avatar}}" alt="{{user.first_name}}"
+                  <img *ngIf="user.avatar" src="{{user.avatar}}" alt="{{user.first_name}} {{user.last_name}}"
                     title="{{user.first_name}} {{user.last_name}}">
+                  <div *ngIf="!user.avatar" class="avatar-default">
+                    <i class="icon icon-user"></i>
+                  </div>
                   <h4>{{user.first_name}} {{user.last_name}}</h4>
                 </div>
                 <div class="single-user-actions">
-                  <span (click)="loadUser(user.id)" (click)="openModalData(content)" class="action-icon" title="edit">
+                  <span (click)="loadUser(user.id)" (click)="openModalData(edit)" class="action-icon" title="edit">
                     <i class="icon icon-edit"></i>
                   </span>
                   <span (click)="confirmDeleteUser(user, userIndex)" (click)="openModalDelete(delete)"
@@ -66,11 +69,15 @@
           <aside [ngClass]="userDetails ? 'detailsShow' : 'detailsHide'"
             class="user-details black-box-shadow detailsHide">
             <i (click)="hideUserDeatils()" class="icon icon-cross"></i>
-            <img src="{{user.avatar}}" alt="{{user.first_name}} {{user.last_name}}"
+            <img *ngIf="user.avatar" src="{{user.avatar}}" alt="{{user.first_name}} {{user.last_name}}"
               title="{{user.first_name}} {{user.last_name}}">
+            <div *ngIf="!user.avatar" class="avatar-default avatar-default-aside">
+              <i class="icon icon-user"></i>
+            </div>
             <h3>{{user.first_name}} {{user.last_name}}</h3>
             <div class="d-flex form-actions">
-              <button class="btn btn-default btn-rec black-box-shadow">
+              <button (click)="loadUser(user.id)" (click)="openModalData(edit)"
+                class="btn btn-default btn-rec black-box-shadow">
                 <i class="icon icon-edit d-flex"></i>Edit
               </button>
               <button (click)="confirmDeleteUser(user, userIndex)" (click)="openModalDelete(delete)" type="button"
@@ -83,7 +90,7 @@
         </div>
 
         <!-- start no users message -->
-        <div class="users-listing-wrapper black-box-shadow no-data" *ngIf="users.length == 0 || users.length == null || !users">
+        <div class="users-listing-wrapper black-box-shadow no-data" *ngIf="users?.length == 0 || users?.length == null">
           <h3 class=text-center>No Users!</h3>
         </div>
         <!-- end no users message -->
@@ -94,23 +101,13 @@
 <!-- end users listing -->
 
 
-<!-- start modal data -->
-<ng-template #content let-modal>
+<!-- start add modal data -->
+<ng-template #add let-modal>
   <div class="modal-body">
     <form (ngSubmit)="submitCreateUser()" ngNativeValidate>
-      <!-- <div class="form-group file-input">
-        <div class="input-group">
-          <i class="icon icon-user d-flex"></i>
-          <input accept="image/png, image/jpeg, image/jpg, image/gif" type="file" name="avatar"
-            (change)="previewImage($event)" [(ngModel)]="user.avatar" id="avatar" class="form-control">
-          <div class="input-group">
-            <img required *ngIf="url" [src]="url" class="img-fluid">
-            <img required *ngIf="!url" src="url" class="img-fluid">
-            <span class="input-group-btn input-group-sm">
-            </span>
-          </div>
-        </div>
-      </div> -->
+      <div class="avatar-icon avatar-default d-flex">
+        <i class="icon icon-user d-flex"></i>
+      </div>
       <div class="form-group">
         <label for="name">First Name</label>
         <input 
@@ -121,7 +118,7 @@
           [(ngModel)]="user.first_name"
           placeholder="First Name..." 
           required 
-          minlength="2" 
+          minlength=2 
           maxlengrth=10 
           #first_name="ngModel"
         >
@@ -166,12 +163,60 @@
       <div class="d-flex form-actions">
         <button type="button" class="btn btn-light black-box-shadow" (click)="modal.close('Close click')">Close</button>
         <button class="btn btn-default btn-rec black-box-shadow">Add</button>
-        <!-- <button *ngIf="editBtn" class="btn btn-default btn-rec black-box-shadow">Edit</button> -->
       </div>
     </form>
   </div>
 </ng-template>
-<!-- end modal data -->
+<!-- end add modal data -->
+
+
+<!-- start edit modal data -->
+<ng-template #edit let-modal>
+  <div class="modal-body">
+    <form (ngSubmit)="submitUpdateUser(user.id, user)" ngNativeValidate>
+      <div class="avatar-icon avatar-default d-flex">
+        <i class="icon icon-user d-flex"></i>
+      </div>
+      <div class="form-group">
+        <label for="name">First Name</label>
+        <input type="text" class="form-control" id="first_name" name="first_name" [(ngModel)]="user.first_name"
+          placeholder="First Name..." required minlength="2" maxlengrth=10 #first_name="ngModel">
+        <div *ngIf="first_name.invalid && (first_name.dirty || first_name.touched)" class="alert alert-danger">
+          <div *ngIf="first_name.errors.required">
+            First Name is required.
+          </div>
+          <div *ngIf="first_name.errors.minlength">
+            First Name be at least 2 characters long.
+          </div>
+          <div *ngIf="first_name.errors.maxlength">
+            First Name shouldn't be more than 10 characters long.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="last_name">Last Name</label>
+        <input type="text" class="form-control" id="last_name" name="last_name" [(ngModel)]="user.last_name"
+          placeholder="Last Name..." required minlength="2" maxlength="10" #last_name="ngModel">
+        <div *ngIf="last_name.invalid && (last_name.dirty || last_name.touched)" class="alert alert-danger">
+          <div *ngIf="last_name.errors.required">
+            Last Name is required.
+          </div>
+          <div *ngIf="last_name.errors.minlength">
+            Last Name be at least 2 characters long.
+          </div>
+          <div *ngIf="last_name.errors.maxlength">
+            Last Name shouldn't be more than 10 characters long.
+          </div>
+        </div>
+      </div>
+      <div class="d-flex form-actions">
+        <button type="button" class="btn btn-light black-box-shadow" (click)="modal.close('Close click')">Close</button>
+        <button class="btn btn-default btn-rec black-box-shadow">Edit</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+<!-- end edit modal data -->
 
 
 <!-- start modal delete -->
