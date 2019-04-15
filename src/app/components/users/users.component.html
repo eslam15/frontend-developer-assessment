@@ -83,7 +83,7 @@
         </div>
 
         <!-- start no users message -->
-        <div class="users-listing-wrapper black-box-shadow no-data" *ngIf="users.length == 0 || users.length == null">
+        <div class="users-listing-wrapper black-box-shadow no-data" *ngIf="users.length == 0 || users.length == null || !users">
           <h3 class=text-center>No Users!</h3>
         </div>
         <!-- end no users message -->
