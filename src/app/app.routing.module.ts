@@ -6,12 +6,14 @@ import { UsersComponent } from './components/users/users.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 
+import { AuthGuard } from './auth/auth.guard';
+
 const appRoutes: Routes = [
-    { path: '', redirectTo: '/users', pathMatch: 'full' },
+    { path: '', redirectTo: 'users', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
-    { path: 'users', component: UsersComponent },
-    { path: 'about', component: AboutComponent },
-    { path: 'contact', component: ContactComponent }
+    { path: 'users', component: UsersComponent, canActivate: [AuthGuard] },
+    { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
+    { path: 'contact', component: ContactComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

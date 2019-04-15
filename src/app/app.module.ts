@@ -12,10 +12,12 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { UsersComponent } from './components/users/users.component';
-import { UsersListingComponent } from './components/users/users-listing/users-listing.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 
+import { AuthGuard } from './auth/auth.guard';
+import { AuthService } from "./shared/services/auth.service";
+import { AuthHttpInterceptor } from "./shared/http/auth-http-interceptor";
 import { ToastService } from './shared/services/toaster.service';
 import { ModalDataService } from './shared/services/modal.service';
 import { UsersService } from './shared/services/users.service';
@@ -28,7 +30,6 @@ import { AppRoutingModule } from './app.routing.module';
     HeaderComponent,
     LoginComponent,
     UsersComponent,
-    UsersListingComponent,
     AboutComponent,
     ContactComponent
   ],
@@ -46,7 +47,10 @@ import { AppRoutingModule } from './app.routing.module';
   providers: [
     ModalDataService,
     UsersService,
-    ToastService
+    ToastService,
+    AuthService,
+    AuthGuard,
+    AuthHttpInterceptor
   ],
   bootstrap: [AppComponent]
 })

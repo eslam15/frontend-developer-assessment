@@ -66,3 +66,279 @@
     }
   }
 }
+
+.users {
+  @include breakpoint(tablet) {
+    flex-direction: column;
+  }
+}
+
+.users-listing {
+  @include breakpoint(tablet) {
+    margin: 30px 0;
+  }
+}
+
+.users-listing-wrapper {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 15px 15px 5px 15px;
+  background: $white;
+  @include border-radius(10px);
+
+  @include breakpoint(tablet) {
+    margin: 0;
+  }
+
+  .users-listing-header {
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    margin-bottom: 20px;
+
+    @include breakpoint(mobile) {
+      margin-bottom: 15px;
+    }
+
+    h6 {
+      margin: 0;
+      font-weight: 500;
+      color: $lightGrey;
+      @include font-size($fontTiny);
+
+      &:last-child {
+        width: 150px;
+        text-align: left;
+      }
+    }
+  }
+
+  .single-user-wrapper {
+    padding: 10px 0;
+    border-bottom: 1px solid $borderColor;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    .single-user-row {
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      background-color: $white;
+      @include border-radius(10px);
+      @include transition(all, 0.2s);
+
+      @include breakpoint(mobile) {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      &:hover {
+        background-color: rgba(140, 67, 172, 0.05);
+      }
+
+      .single-user-info {
+        align-items: center;
+
+        @include breakpoint(mobile) {
+          margin-bottom: 30px;
+        }
+
+        img {
+          width: 55px;
+          height: 55px;
+          @include border-radius(100%);
+        }
+
+        h4 {
+          margin: 0 0 0 10px;
+          color: $darkBlue;
+          font-weight: 500;
+          @include font-size($fontSmall);
+
+          @include breakpoint(mobile) {
+            margin-left: 15px;
+          }
+        }
+      }
+
+      .single-user-actions {
+        .action-icon {
+          display: inline-block;
+          width: 30px;
+          height: 30px;
+          margin-right: 15px;
+          border: 1px solid $mainPurple;
+          background-color: $white;
+          cursor: pointer;
+          @include border-radius(3px);
+          @include transition (all, 0.2s);
+
+          &:hover {
+            background-color: $mainPurple;
+            border: 1px solid $white;
+
+            i {
+              color: $white;
+            }
+          }
+
+          &:last-child {
+            position: relative;
+            border: 0;
+            right: 0;
+            left: auto;
+            top: auto;
+            bottom: auto;
+            margin-left: 30px;
+            margin-right: 0;
+            background: transparent;
+
+            @include breakpoint(mobile) {
+              margin-left: 15px;
+            }
+
+            i {
+              @include font-size($fontTiny);
+            }
+
+            &:hover {
+              right: -5px;
+              background-color: transparent;
+              border: none;
+
+              i {
+                color: $mainPurple;
+              }
+            }
+          }
+
+          i {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            color: $mainPurple;
+            @include transition (all, 0.2s);
+            @include font-size($fontExSmall);
+          }
+        }
+      }
+    }
+  }
+
+  &.no-data {
+    h3 {
+      color: $darkBlue;
+      @include font-size($fontMedium);
+    }
+  }
+
+  &.listFullWidth {
+    width: 100%;
+    @include transition (all, 0.2s);
+  }
+
+  &.listPartialWidth {
+    width: 75%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    @include transition (all, 0.2s);
+
+    @include breakpoint(tablet) {
+      width: 100%;
+      border-top-right-radius: 10px;
+      border-bottom-left-radius: 0;
+    }
+  }
+}
+
+.user-details {
+  position: relative;
+  width: 25%;
+  padding: 50px 15px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  flex-direction: column;
+  align-items: center;
+  background-color: $mainColor;
+  @include border-radius(10px);
+  @include transition(0.2s, all);
+
+  @include breakpoint(tablet) {
+    margin: 0;
+  }
+
+  img {
+    @include border-radius(100%);
+    width: 125px;
+    height: 125px;
+  }
+
+  h3 {
+    color: $darkBlue;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    font-weight: 500;
+    @include font-size($fontMedium);
+  }
+
+  .form-actions {
+    width: 100%;
+
+    @include breakpoint(tablet) {
+      width: auto;
+    }
+
+    @include breakpoint(mobile) {
+      width: 100%;
+    }
+
+    .btn {
+      width: 100%;
+
+      &:last-child {
+        margin-left: 10px;
+      }
+
+      i {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .icon-cross {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    bottom: auto;
+    left: auto;
+    cursor: pointer;
+    color: $mainPurple;
+    @include font-size($fontTiny);
+  }
+
+  &.detailsHide {
+    display: none;
+    width: 0;
+    z-index: -1;
+    transform: translateX(-100%);
+  }
+
+  &.detailsShow {
+    display: flex;
+    width: 25%;
+    z-index: auto;
+    transform: translateX(0);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+
+    @include breakpoint(tablet) {
+      width: 100%;
+      border-top-right-radius: 0;
+      border-bottom-left-radius: 10px;
+    }
+  }
+}

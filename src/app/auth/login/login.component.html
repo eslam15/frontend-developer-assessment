@@ -11,18 +11,34 @@
       <h1>Welcome back!</h1>
       <h6>Please login to access your <span>Spaces</span> Dashboard</h6>
     </div>
-    <form>
+    <form (ngSubmit)="login()">
       <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" name="username" splaceholder="Username...">
+        <label for="email">Email Address</label>
+        <input 
+          type="email" 
+          class="form-control" 
+          id="email" 
+          name="Email" 
+          [(ngModel)]="user.email"
+          splaceholder="Email Address..." 
+          required
+        >
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+        <input 
+          type="password" 
+          class="form-control" 
+          id="password" 
+          name="password" 
+          [(ngModel)]="user.password" 
+          placeholder="Password" 
+          required
+        >
       </div>
       <div class="d-flex form-actions">
         <a href="#">Forget password?</a>
-        <button type="submit" class="btn btn-default btn-rec black-box-shadow">Login</button>
+        <button class="btn btn-default btn-rec black-box-shadow">Login</button>
       </div>
     </form>
   </div>

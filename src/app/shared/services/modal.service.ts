@@ -10,4 +10,9 @@ export class ModalDataService {
     openDialog(content: any) {
         this.modalService.open(content, { centered: true });
     }
+
+    closeDialog() {
+        this.modalService.dismissAll();
+    }
+
 }

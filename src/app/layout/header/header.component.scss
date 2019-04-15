@@ -20,7 +20,7 @@ header {
                 @include transition(height, 0.3s);
                 height: 0px;
                 ul {
-                    @include breakpoint(tablet) {
+                    @media (max-width:992px) {
                         @include opacity(0);
                         @include transition(opacity, 0.1s);
                     }
@@ -36,7 +36,7 @@ header {
             }
         }
         .navbar-nav {
-            @include breakpoint(tablet) {
+            @media (max-width:992px) {
                 display: inline-block;
                 padding: 15px 0;
                 li {

@@ -147,6 +147,10 @@
         color: $darkBlue;
         @include font-size($fontSmall);
         @include border-radius(3px);
+        &.ng-invalid.ng-dirty,
+        &.ng-touched.ng-invalid {
+          border-color: $errorDanger;
+        }
         &:focus {
           outline: 0;
           box-shadow: none;
@@ -198,3 +202,12 @@
     }
   }
 }
+
+.alert-danger {
+  background-color: transparent;
+  border-color: transparent;
+  padding: 5px 0;
+  @include font-size($fontTiny);
+}
+
+
