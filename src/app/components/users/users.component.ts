@@ -29,7 +29,9 @@ export class UsersComponent implements OnInit {
   ) { this.loadUsers(); }
 
 
-  /*** Reset User Data ***/ 
+  /*** 
+   * Reset User Data 
+  **/ 
   openModalData(content: any) {
     this.mdService.openDialog(content);
     this.user = {};
@@ -37,24 +39,26 @@ export class UsersComponent implements OnInit {
     this.imageFile = null;
     this.hideUserDeatils();
   }
-  /*** Reset User Data ***/
 
 
 
-  /*** All Userss Data Methods ***/
-  // load all users
+  /*** 
+   * All Userss Data Methods 
+   * load all users
+  **/
   loadUsers() {
     this.usersService.getUsers()
       .subscribe((data: { body: { data: any }; }) => {
         this.users = data.body.data;
       })
   }
-  /*** All Userss Data Methods ***/
 
 
 
-  /*** Single User Data Methods ***/
-  // show user details aside
+  /*** 
+   * Single User Data Methods 
+   * show user details aside
+   **/
   showUserDeatils() {
     this.userDetails = true;
   }
@@ -95,7 +99,9 @@ export class UsersComponent implements OnInit {
 
 
 
-  /*** Update Single User ***/
+  /***
+   * Update Single User 
+   **/
   onUpdate() {
     this.editBtn = true;
   }
@@ -107,12 +113,13 @@ export class UsersComponent implements OnInit {
         this.toastService.showSuccess(`${user.body.first_name} ${user.body.last_name} is updated successfully`);
       })
   }
-  /*** Update Single User ***/
 
 
 
-  /*** Delete Single User methods ***/
-  // open delete modal
+  /***
+   *  Delete Single User methods 
+   *  open delete modal
+   **/
   openModalDelete(content: any) {
     this.mdService.openDialog(content);
   }
@@ -136,7 +143,6 @@ export class UsersComponent implements OnInit {
         this.toastService.showSuccess(`${user.first_name} ${user.last_name} is deleted successfully`);
       })
   }
-  /*** Delete Single User methods ***/
 
 
   ngOnInit() {
