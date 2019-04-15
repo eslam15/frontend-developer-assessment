@@ -29,9 +29,20 @@ header {
             &.collapseIn {
                 @include transition(height, 0.3s);
                 height: 185px;
+                    @media (max-width:992px) {
+                        display: flex;
+                        justify-content: center;
+                        align-items: flex-start;
+                        flex-direction: column;
+                    }
                 ul {
                     @include transition(opacity, 0.8s);
                     @include opacity(1);
+                    @media (max-width:992px) {
+                        &.ml-auto {
+                            margin-left: 0 !important;
+                        }
+                    }
                 }
             }
         }
@@ -64,6 +75,9 @@ header {
     }
     &.active {
         color: $mainPurple;
+    }
+    &:last-child {
+        padding-right: 0;
     }
 }
 
