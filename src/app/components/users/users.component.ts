@@ -58,7 +58,7 @@ export class UsersComponent implements OnInit {
   /*** 
    * Single User Data Methods 
    * show user details aside
-   **/
+  **/
   showUserDeatils() {
     this.userDetails = true;
   }
@@ -82,17 +82,18 @@ export class UsersComponent implements OnInit {
 
   /**
    * Create Single User
-   */
+  **/
   onAdd() {
     this.editBtn = false;
   }
   submitCreateUser() {
     this.usersService.createUser(this.user)
-      .subscribe((data: { body: any; }) => {
+      .subscribe((data: { body: { first_name?: any; last_name?: any; }; }) => {
         let user = data.body;
+        console.log(user)
         this.users.push(user);
         this.mdService.closeDialog();
-        this.toastService.showSuccess(`${user.body.data.first_name} ${user.body.data.last_name} is added successfully`);
+        this.toastService.showSuccess(`${user.first_name} ${user.last_name} is added successfully`);
       })
   }
   
@@ -101,7 +102,7 @@ export class UsersComponent implements OnInit {
 
   /***
    * Update Single User 
-   **/
+  **/
   onUpdate() {
     this.editBtn = true;
   }
@@ -119,7 +120,7 @@ export class UsersComponent implements OnInit {
   /***
    *  Delete Single User methods 
    *  open delete modal
-   **/
+  **/
   openModalDelete(content: any) {
     this.mdService.openDialog(content);
   }
